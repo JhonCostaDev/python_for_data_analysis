@@ -87,3 +87,29 @@ divider(df2)
 del df2['Eastern']
 
 divider(df2)
+
+
+# Nested dict of dict
+
+pop = {
+    'Nevada': {2000: 2.4, 2001: 2.9},
+    'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}
+}
+
+# If the nested dict is passed to the DataFrame, pandas will interpret the outer dict keys as the columns and the inner keys as the row indices:
+
+df3 = pd.DataFrame(pop)
+
+divider(df3)
+
+# TRANSPOSING
+
+# We can transpose the DataFrame (swap rows and columns) with similar syntax to a Numpy array:
+
+divider(df3.T)
+
+# The keys in the inner dicts are combined and sorted to form the index in the result.
+
+# This isn't true if an explicit index is specified:
+
+divider(pd.DataFrame(pop, index=[2001, 2002, 2003]))
